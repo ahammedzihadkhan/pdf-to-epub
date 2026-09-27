@@ -28,8 +28,9 @@ def get_api_key():
 
 API_KEY = get_api_key()
 
-# Configuration
-PDF_PATH = Path("পৃথিবীর পথে পথে - তারেক অনু.pdf")
+# Default Configuration
+DEFAULT_PDF_PATH = Path("পৃথিবীর পথে পথে - তারেক অনু.pdf")
+DEFAULT_OUTPUT = "prithibi.epub"
 PAGES_DIR = Path("prithibi_pages")
 PHOTOS_DIR = Path("prithibi_photos")
 OCR_CACHE = Path("prithibi_ocr_cache")
@@ -130,10 +131,10 @@ def ocr_single_page(client: genai.Client, image_path: Path):
 def process_photos_and_build_epub(page_data, output_file="prithibi.epub"):
     print("Cropping photos and building EPUB...")
     book = epub.EpubBook()
-    book.set_identifier('id_prithibi_1234')
-    book.set_title('পৃথিবীর পথে পথে')
+    book.set_identifier('id_book_1234')
+    book.set_title(Path(output_file).stem)
     book.set_language('bn')
-    book.add_author('তারেক অনু')
+    book.add_author('Unknown')
 
     chapters = []
     current_chapter = None
@@ -228,13 +229,14 @@ def process_photos_and_build_epub(page_data, output_file="prithibi.epub"):
     else:
         print("No content found to build EPUB.")
 
-def main():
-    if not PDF_PATH.exists():
-        print(f"File not found: {PDF_PATH}")
-        sys.exit(1)
+def run_pipeline(pdf_path: str, api_key: str, output_epub: str, progress_callback=None):
+    pdf_path_obj = Path(pdf_path)
+    if not pdf_path_obj.exists():
+        print(f"File not found: {pdf_path_obj}")
+        return
 
-    page_data = pdf_to_images(PDF_PATH)
-    client = genai.Client(api_key=API_KEY)
+    page_data = pdf_to_images(pdf_path_obj)
+    client = genai.Client(api_key=api_key)
     
     to_process = [p for p in page_data if not (OCR_CACHE / f"{p['img_path'].stem}.json").exists()]
     
@@ -242,10 +244,17 @@ def main():
         print(f"Processing {len(to_process)} pages with Gemini OCR concurrently...")
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             futures = {executor.submit(ocr_single_page, client, p['img_path']): p for p in to_process}
-            for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures), desc="OCR Progress"):
-                pass
+            completed = 0
+            for future in concurrent.futures.as_completed(futures):
+                completed += 1
+                if progress_callback:
+                    progress_callback(completed, len(to_process))
             
-    process_photos_and_build_epub(page_data)
+    process_photos_and_build_epub(page_data, output_file=output_epub)
+    print("Pipeline completed successfully!")
+
+def main():
+    run_pipeline(str(DEFAULT_PDF_PATH), API_KEY, DEFAULT_OUTPUT)
 
 if __name__ == "__main__":
     main()
