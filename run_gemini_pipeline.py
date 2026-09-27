@@ -5,7 +5,11 @@ import time
 from pathlib import Path
 import concurrent.futures
 
-sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+try:
+    if sys.stdout is not None:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+except Exception:
+    pass
 
 import fitz  # PyMuPDF
 from PIL import Image
