@@ -1,0 +1,30 @@
+{
+  "heading": "জলে কার ছায়া",
+  "page_number": null,
+  "raw_text": "জলে কার ছায়া\nPhoto : Senor Julio",
+  "content_markdown": "# জলে কার ছায়া\n\nPhoto : Senor Julio",
+  "photos": [
+    {
+      "description": "A sailboat on the horizon of the sea",
+      "box_2d": [
+        [
+          111,
+          178,
+          456,
+          809
+        ]
+      ]
+    },
+    {
+      "description": "A scuba diver underwater wearing goggles and breathing apparatus, with a small fish nearby",
+      "box_2d": [
+        [
+          551,
+          173,
+          903,
+          808
+        ]
+      ]
+    }
+  ]
+}

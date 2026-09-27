@@ -1,0 +1,28 @@
+{
+  "heading": null,
+  "page_number": null,
+  "raw_text": "মানুষের গল্প জনপদের গল্প",
+  "content_markdown": "মানুষের গল্প জনপদের গল্প",
+  "photos": [
+    {
+      "description": "Black and white aerial view of a coastal city with a large hill or mountain in the background.",
+      "box_2d": [
+        170,
+        158,
+        453,
+        827
+      ]
+    },
+    {
+      "description": "Black and white portrait of a bald man smoking a cigar, with a picture of Che Guevara hanging on the wall in the background.",
+      "box_2d": [
+        [
+          545,
+          161,
+          896,
+          829
+        ]
+      ]
+    }
+  ]
+}
