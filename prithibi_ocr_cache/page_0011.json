@@ -1,25 +1,22 @@
 {
   "heading": "তুষার ও অগ্নির উপাখ্যান",
-  "page_number": null,
-  "raw_text": "Photo : Mike King\nতুষার ও অগ্নির উপাখ্যান",
-  "content_markdown": "# তুষার ও অগ্নির উপাখ্যান",
+  "raw_text": "Photo : Mike King\n\nতুষার ও অগ্নির উপাখ্যান",
+  "content_markdown": "[PHOTO_0]\n\nPhoto : Mike King\n\n# তুষার ও অগ্নির উপাখ্যান\n\n[PHOTO_1]",
   "photos": [
     {
-      "description": "দুইজন ব্যক্তি তুষারাবৃত মাঠে হেঁটে যাচ্ছেন",
       "box_2d": [
-        151,
-        158,
-        465,
-        838
+        146,
+        153,
+        467,
+        843
       ]
     },
     {
-      "description": "পাহাড় বা উপত্যকার একটি প্রাকৃতিক দৃশ্য",
       "box_2d": [
-        561,
-        157,
-        910,
-        837
+        557,
+        153,
+        915,
+        843
       ]
     }
   ]

@@ -1,16 +1,22 @@
 {
-  "heading": "পৃথিবীর পথে পথে",
-  "page_number": null,
-  "raw_text": "পৃথিবীর পথে পথে\nতারেক অনু\nবাংলাদেশ\nBANGLADESH",
-  "content_markdown": "# পৃথিবীর পথে পথে\n## তারেক অনু\n\nবাংলাদেশ\nBANGLADESH",
+  "heading": null,
+  "raw_text": "পৃথিবীর পথে পথে\nতারক অনু\nবাংলাদেশ\nBANGLADESH",
+  "content_markdown": "[PHOTO_0]\nপৃথিবীর পথে পথে\nতারেক অণু\n[PHOTO_1]\nবাংলাদেশ\nBANGLADESH",
   "photos": [
     {
-      "description": "A person wearing a sun hat and a green t-shirt with 'বাংলাদেশ BANGLADESH' printed on the back, looking at the historic ruins of Machu Picchu in Peru.",
       "box_2d": [
         0,
-        45,
-        1000,
+        44,
+        997,
         955
+      ]
+    },
+    {
+      "box_2d": [
+        412,
+        137,
+        998,
+        953
       ]
     }
   ]

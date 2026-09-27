@@ -3,8 +3,6 @@ import sys
 import json
 import time
 from pathlib import Path
-from typing import Dict, Any, List
-import io
 import concurrent.futures
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -19,7 +17,16 @@ import ebooklib
 from ebooklib import epub
 import markdown
 
-API_KEY = os.environ.get("GEMINI_API_KEY") or "YOUR_API_KEY"
+def get_api_key():
+    key = os.environ.get("GEMINI_API_KEY")
+    if key: return key
+    if Path(".env").exists():
+        for line in open(".env"):
+            if line.startswith("GEMINI_API_KEY="):
+                return line.strip().split("=")[1]
+    return "YOUR_API_KEY"
+
+API_KEY = get_api_key()
 
 # Configuration
 PDF_PATH = Path("পৃথিবীর পথে পথে - তারেক অনু.pdf")
@@ -42,25 +49,24 @@ MODELS = [
     "gemini-3.7-flash",
 ]
 
-OCR_PROMPT = """You are an expert transcriber and spell-checker for Bengali books.
-Transcribe this scanned page from the travelogue 'পৃথিবীর পথে পথে' by তারেক অনু.
+OCR_PROMPT = """You are an expert transcriber and EPUB formatter for Bengali books.
+Transcribe this scanned page from 'পৃথিবীর পথে পথে' by তারেক অনু.
 
 RULES:
-1. Transcribe ALL Bengali and English text verbatim.
-2. Fix minor OCR/spelling mistakes in the Bengali text (spell-check), but keep the sentence structure and author's tone intact.
-3. If the page contains a distinct photograph or illustration (not just text), describe it and provide its bounding box.
-   The bounding box must be in the format [ymin, xmin, ymax, xmax] using normalized coordinates from 0 to 1000 (e.g. [150, 100, 450, 900]).
-   Do NOT transcribe text that is part of the photograph.
-4. Return ONLY a valid JSON object in this schema:
+1. Transcribe ALL Bengali and English text verbatim. Fix minor OCR mistakes but keep the tone intact.
+2. **CHAPTERS**: If this page has a large heading that looks like the start of a new chapter or article, put it in the "heading" field. Otherwise, set it to null.
+3. **PHOTOS**: If the page has distinct photographs or illustrations:
+   - For each photo, you MUST insert a placeholder like `[PHOTO_0]`, `[PHOTO_1]` etc. inside `content_markdown` EXACTLY where it appears relative to the text flow.
+   - Provide the bounding box for each photo in the `photos` list in the format [ymin, xmin, ymax, xmax] using normalized coordinates (0 to 1000).
+
+4. Return ONLY valid JSON:
 {
   "heading": "string or null",
-  "page_number": "string (original printed page number if visible, or null)",
-  "raw_text": "The raw extracted text BEFORE spell checking (for dataset generation)",
-  "content_markdown": "Full transcription in markdown WITH spelling corrected",
+  "raw_text": "Raw text before spell checking",
+  "content_markdown": "Full transcription WITH spelling corrected. Must contain [PHOTO_0] etc. if photos exist.",
   "photos": [
     {
-      "description": "Short description of the photo",
-      "box_2d": [150, 100, 450, 900]
+      "box_2d": [ymin, xmin, ymax, xmax]
     }
   ]
 }"""
@@ -130,68 +136,97 @@ def process_photos_and_build_epub(page_data, output_file="prithibi.epub"):
     book.add_author('তারেক অনু')
 
     chapters = []
+    current_chapter = None
+    current_chapter_title = "সূচনা (Introduction)"
+    current_chapter_md = ""
+    chapter_index = 1
     
+    def finalize_chapter():
+        nonlocal current_chapter_md, current_chapter_title, chapter_index, chapters, book
+        if not current_chapter_md.strip():
+            return
+        html_content = markdown.markdown(current_chapter_md, extensions=['tables'])
+        c = epub.EpubHtml(title=current_chapter_title, file_name=f"chapter_{chapter_index:03d}.xhtml", lang='bn')
+        c.content = f'<html><head><title>{current_chapter_title}</title></head><body><h1>{current_chapter_title}</h1>{html_content}</body></html>'
+        book.add_item(c)
+        chapters.append(c)
+        current_chapter_md = ""
+        chapter_index += 1
+
     for p in page_data:
         cache_file = OCR_CACHE / f"{p['img_path'].stem}.json"
-        content_md = ""
-        photos = []
-        if cache_file.exists():
-            try:
-                with open(cache_file, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    content_md = data.get("content_markdown", "")
-                    photos = data.get("photos", [])
-            except Exception:
-                pass
+        if not cache_file.exists():
+            continue
+            
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            continue
+            
+        heading = data.get("heading")
+        content_md = data.get("content_markdown", "")
+        photos = data.get("photos", [])
         
-        # Crop photos based on box_2d
+        if heading and heading.strip() and heading.lower() != "null":
+            finalize_chapter()
+            current_chapter_title = heading.strip()
+            
+        # Crop photos and replace placeholders
         img_w, img_h = 0, 0
         pil_img = None
         if photos:
-            pil_img = Image.open(p['img_path'])
-            img_w, img_h = pil_img.size
+            try:
+                pil_img = Image.open(p['img_path'])
+                img_w, img_h = pil_img.size
+            except:
+                pass
             
-        photo_files = []
         for f_idx, photo in enumerate(photos):
             box = photo.get("box_2d")
-            if not box or len(box) != 4: continue
-            
-            ymin, xmin, ymax, xmax = box
-            # convert normalized (0-1000) to pixels
-            y0 = max(0, int(ymin * img_h / 1000))
-            x0 = max(0, int(xmin * img_w / 1000))
-            y1 = min(img_h, int(ymax * img_h / 1000))
-            x1 = min(img_w, int(xmax * img_w / 1000))
-            
-            if x1 <= x0 or y1 <= y0: continue
-            
-            crop = pil_img.crop((x0, y0, x1, y1))
             photo_filename = f"{p['img_path'].stem}_fig_{f_idx}.jpg"
             photo_path = PHOTOS_DIR / photo_filename
-            crop.save(photo_path, format="JPEG", quality=85)
-            photo_files.append(photo_filename)
-        
-        # Embed photos in EPUB
-        for photo in photo_files:
-            with open(PHOTOS_DIR / photo, "rb") as pf:
-                book.add_item(epub.EpubItem(uid=photo, file_name=f"images/{photo}", media_type="image/jpeg", content=pf.read()))
-            content_md += f"\n\n<figure><img src=\"images/{photo}\" /></figure>\n\n"
             
-        if not content_md.strip() and not photo_files:
-            continue
+            valid_crop = False
+            if box and len(box) == 4 and pil_img:
+                ymin, xmin, ymax, xmax = box
+                y0 = max(0, int(ymin * img_h / 1000))
+                x0 = max(0, int(xmin * img_w / 1000))
+                y1 = min(img_h, int(ymax * img_h / 1000))
+                x1 = min(img_w, int(xmax * img_w / 1000))
+                
+                if x1 > x0 and y1 > y0:
+                    crop = pil_img.crop((x0, y0, x1, y1))
+                    crop.save(photo_path, format="JPEG", quality=85)
+                    valid_crop = True
             
-        html_content = markdown.markdown(content_md, extensions=['tables'])
-        c = epub.EpubHtml(title=f"Page {p['page_num']}", file_name=f"page_{p['page_num']:04d}.xhtml", lang='bn')
-        c.content = f'<html><head></head><body>{html_content}</body></html>'
-        book.add_item(c)
-        chapters.append(c)
+            if valid_crop:
+                with open(photo_path, "rb") as pf:
+                    book.add_item(epub.EpubItem(uid=photo_filename, file_name=f"images/{photo_filename}", media_type="image/jpeg", content=pf.read()))
+                
+                img_tag = f'\n\n<figure><img src="images/{photo_filename}" style="max-width:100%; height:auto;" /></figure>\n\n'
+                
+                placeholder = f"[PHOTO_{f_idx}]"
+                if placeholder in content_md:
+                    content_md = content_md.replace(placeholder, img_tag)
+                else:
+                    # If model forgot placeholder, append it
+                    content_md += img_tag
 
-    book.toc = tuple(chapters)
-    book.add_item(epub.EpubNcx())
-    book.add_item(epub.EpubNav())
-    book.spine = ['nav'] + chapters
-    epub.write_epub(output_file, book, {})
-    print(f"EPUB generated at {output_file}")
+        current_chapter_md += f"\n\n{content_md}\n\n"
+
+    # Finalize the last chapter
+    finalize_chapter()
+
+    if chapters:
+        book.toc = tuple(chapters)
+        book.add_item(epub.EpubNcx())
+        book.add_item(epub.EpubNav())
+        book.spine = ['nav'] + chapters
+        epub.write_epub(output_file, book, {})
+        print(f"EPUB generated at {output_file}")
+    else:
+        print("No content found to build EPUB.")
 
 def main():
     if not PDF_PATH.exists():
