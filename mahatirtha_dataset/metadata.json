@@ -1,0 +1,12 @@
+{
+  "source_book": "মহাতীর্থের শেষ যাত্রী",
+  "author": "বিমল দে",
+  "language": "bn",
+  "ocr_model": "gemini-3.5-flash",
+  "exported_at": "2026-10-12T09:33:39.831841",
+  "total_pages": 448,
+  "pages_with_figures": 21,
+  "total_figures": 34,
+  "train_size": 403,
+  "val_size": 45
+}

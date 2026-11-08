@@ -1,0 +1,222 @@
+[
+  {
+    "page": "page_0000",
+    "page_num": 0,
+    "figure_id": "page_0000_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      234,
+      1112,
+      937,
+      1737
+    ],
+    "norm_box": [
+      634,
+      189,
+      990,
+      756
+    ],
+    "file": "page_0000_fig_000.jpg",
+    "label": "চিত্র 1",
+    "caption": ""
+  },
+  {
+    "page": "page_0001",
+    "page_num": 1,
+    "figure_id": "page_0001_fig_000",
+    "figure_local_idx": 0,
+    "source": "opencv",
+    "pixel_box": [
+      268,
+      0,
+      976,
+      1755
+    ],
+    "norm_box": [
+      0,
+      216,
+      1000,
+      787
+    ],
+    "file": "page_0001_fig_000.jpg",
+    "label": "চিত্র 2",
+    "caption": ""
+  },
+  {
+    "page": "page_0035",
+    "page_num": 35,
+    "figure_id": "page_0035_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      234,
+      164,
+      1025,
+      642
+    ],
+    "norm_box": [
+      94,
+      189,
+      366,
+      827
+    ],
+    "file": "page_0035_fig_000.jpg",
+    "label": "চিত্র 8",
+    "caption": ""
+  },
+  {
+    "page": "page_0035",
+    "page_num": 35,
+    "figure_id": "page_0035_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      231,
+      1133,
+      1020,
+      1609
+    ],
+    "norm_box": [
+      646,
+      187,
+      917,
+      823
+    ],
+    "file": "page_0035_fig_001.jpg",
+    "label": "চিত্র 9",
+    "caption": ""
+  },
+  {
+    "page": "page_0083",
+    "page_num": 83,
+    "figure_id": "page_0083_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      245,
+      131,
+      1057,
+      336
+    ],
+    "norm_box": [
+      75,
+      198,
+      192,
+      853
+    ],
+    "file": "page_0083_fig_000.jpg",
+    "label": "চিত্র 11",
+    "caption": ""
+  },
+  {
+    "page": "page_0083",
+    "page_num": 83,
+    "figure_id": "page_0083_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      251,
+      419,
+      1049,
+      614
+    ],
+    "norm_box": [
+      239,
+      203,
+      350,
+      846
+    ],
+    "file": "page_0083_fig_001.jpg",
+    "label": "চিত্র 12",
+    "caption": ""
+  },
+  {
+    "page": "page_0085",
+    "page_num": 85,
+    "figure_id": "page_0085_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      197,
+      242,
+      982,
+      728
+    ],
+    "norm_box": [
+      138,
+      159,
+      415,
+      792
+    ],
+    "file": "page_0085_fig_000.jpg",
+    "label": "চিত্র 15",
+    "caption": ""
+  },
+  {
+    "page": "page_0085",
+    "page_num": 85,
+    "figure_id": "page_0085_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      307,
+      810,
+      869,
+      1272
+    ],
+    "norm_box": [
+      462,
+      248,
+      725,
+      701
+    ],
+    "file": "page_0085_fig_001.jpg",
+    "label": "চিত্র 16",
+    "caption": ""
+  },
+  {
+    "page": "page_0198",
+    "page_num": 198,
+    "figure_id": "page_0198_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      398,
+      157,
+      947,
+      665
+    ],
+    "norm_box": [
+      90,
+      321,
+      379,
+      764
+    ],
+    "file": "page_0198_fig_000.jpg",
+    "label": "চিত্র 20",
+    "caption": ""
+  },
+  {
+    "page": "page_0220",
+    "page_num": 220,
+    "figure_id": "page_0220_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      579,
+      967,
+      685,
+      1082
+    ],
+    "norm_box": [
+      551,
+      467,
+      617,
+      553
+    ],
+    "file": "page_0220_fig_000.jpg",
+    "label": "চিত্র 21",
+    "caption": ""
+  }
+]

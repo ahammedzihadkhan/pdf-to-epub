@@ -1,0 +1,13 @@
+{
+  "source_book": "manusher_golpo",
+  "author": "Ashfaq Ahmed",
+  "language": "bn",
+  "ocr_model": "gemini-3.5-flash",
+  "pipeline": "manusher_pipeline.py",
+  "exported_at": "2026-10-02T12:40:48.337697",
+  "total_pages": 198,
+  "pages_with_figures": 13,
+  "total_figures": 20,
+  "train_size": 178,
+  "val_size": 20
+}

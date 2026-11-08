@@ -2,7 +2,24 @@
 
 A smart desktop application that converts scanned Bengali PDF books into well-formatted EPUB files using the Google Gemini Vision AI model. 
 
-Unlike traditional OCR systems, this tool uses Gemini's advanced spatial reasoning to:
+## Quick start: offline, low-resource (CPU only, 8 GB RAM)
+
+```bash
+python -m bangla_ai_ocr.layout_model train          # once, a few minutes on 2 CPU threads
+python -m bangla_ai_ocr.text_corrector collect      # optional, slow (~1-2 min/page); resumable
+python -m bangla_ai_ocr.text_corrector train        # learns offline text fixes from Gemini pages
+python bangla_pdf_to_epub.py "book.pdf" --offline --title "বইয়ের নাম" --author "লেখক" --sleep 0.5
+```
+
+- Page 1 always becomes the EPUB cover.
+- A small local layout model finds photos. EasyOCR reads the text with photos blanked out, so no internet is needed.
+- A learned text corrector fixes words EasyOCR often misreads. It is only switched on if it lowers the error rate on held-out pages.
+- With a Gemini key, Gemini reads the text and the local model is re-checked against it.
+- Use `--threads 1` and a larger `--sleep` to slow down further on a hot laptop.
+- Reuse old caches with `--prefix mahatirtha`.
+- Design and ER diagram: [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md).
+
+With a Gemini key, the tool also uses Gemini's spatial reasoning. Unlike traditional OCR systems, this tool uses Gemini's advanced spatial reasoning to:
 - Extract text with exceptionally high accuracy.
 - Fix Bengali spelling mistakes.
 - Automatically detect chapters based on text headings.
@@ -21,7 +38,7 @@ Unlike traditional OCR systems, this tool uses Gemini's advanced spatial reasoni
 ## Requirements
 
 - Python 3.10+
-- Google Gemini API Key
+- Optional: Google Gemini API Key (better text; leave empty to run offline)
 
 ### Dependencies
 
@@ -29,7 +46,7 @@ Install the required Python packages:
 ```bash
 pip install -r requirements.txt
 ```
-*(If `requirements.txt` is missing, you can manually install: `PyMuPDF Pillow google-genai ebooklib markdown tqdm customtkinter`)*
+*(If `requirements.txt` is missing, you can manually install: `PyMuPDF Pillow google-genai ebooklib markdown tqdm customtkinter opencv-python scikit-learn easyocr`)*
 
 ## Usage
 
@@ -38,10 +55,12 @@ pip install -r requirements.txt
    ```bash
    python pdf_to_epub_gui.py
    ```
-2. Enter your **Gemini API Key** in the input field.
-3. Select your input **PDF** file.
-4. Set the name for your output **EPUB**.
-5. Click **Start Conversion** and wait for the progress bar to complete.
+2. Click **Browse** and choose the scanned PDF. Page 1 is previewed as the cover, and the EPUB path and title are filled in.
+3. Choose the **Text reader**. **Offline** (the default) needs no internet. **Gemini** sends pages to Gemini and needs an API key.
+4. Set **CPU threads** and **Rest per page** to suit your PC. Fewer threads and longer rests keep a laptop cool.
+5. Click **Start conversion**. The **Preview** tab follows the page being read and draws red boxes around the photos found. Flip pages with the slider or the arrow keys, or click a page to open it full size. The progress card shows the current step, pages done, elapsed time, time left and speed. The **Log** tab shows each step.
+   **Pause** holds the run after the current page (**Resume** continues). **Stop** ends it after the current page; finished pages are kept, and **Resume conversion** picks up from there.
+6. When it finishes, click **Open EPUB** or **Open folder**. You can also close the app at any time, and the next run resumes.
 
 ### Creating an Executable (.exe)
 You can build a standalone Windows application that doesn't require Python to be installed.

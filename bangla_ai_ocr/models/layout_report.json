@@ -1,0 +1,55 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "test": {
+        "pages": 125,
+        "photo_page_agreement": 0.984,
+        "box_precision": 0.9615,
+        "box_recall": 0.9259,
+        "mean_page_f1": 0.9813
+      }
+    },
+    {
+      "round": 2,
+      "test": {
+        "pages": 125,
+        "photo_page_agreement": 0.984,
+        "box_precision": 0.9615,
+        "box_recall": 0.9259,
+        "mean_page_f1": 0.9813
+      }
+    }
+  ],
+  "bandit": {
+    "arm": [
+      0.6,
+      16,
+      1
+    ],
+    "avg_reward": 0.9289,
+    "episodes": 3000
+  },
+  "test_cells_only": {
+    "pages": 125,
+    "photo_page_agreement": 0.984,
+    "box_precision": 1.0,
+    "box_recall": 0.9259,
+    "mean_page_f1": 0.984
+  },
+  "test_with_gutter_split": {
+    "pages": 125,
+    "photo_page_agreement": 0.984,
+    "box_precision": 1.0,
+    "box_recall": 0.9259,
+    "mean_page_f1": 0.984
+  },
+  "use_gutter_split": true,
+  "final_test_vs_gemini": {
+    "pages": 125,
+    "photo_page_agreement": 0.984,
+    "box_precision": 1.0,
+    "box_recall": 0.9259,
+    "mean_page_f1": 0.984
+  }
+}

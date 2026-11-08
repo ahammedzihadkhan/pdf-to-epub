@@ -1,0 +1,750 @@
+[
+  {
+    "page": "page_0001",
+    "page_num": 1,
+    "figure_id": "page_0001_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      191,
+      217,
+      675,
+      690
+    ],
+    "norm_box": [
+      168,
+      227,
+      532,
+      799
+    ],
+    "file": "page_0001_fig_000.jpg",
+    "label": "চিত্র 1",
+    "caption": "তিব্বতী-মন্ডলায় \"ওম্\""
+  },
+  {
+    "page": "page_0002",
+    "page_num": 2,
+    "figure_id": "page_0002_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      87,
+      38,
+      723,
+      1123
+    ],
+    "norm_box": [
+      30,
+      103,
+      866,
+      856
+    ],
+    "file": "page_0002_fig_000.jpg",
+    "label": "চিত্র 2",
+    "caption": "ডাকিনী : স্ত্রী শক্তি যিনি দীক্ষার দ্বারা জ্ঞান দান করেন।"
+  },
+  {
+    "page": "page_0011",
+    "page_num": 11,
+    "figure_id": "page_0011_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      514,
+      302,
+      712,
+      367
+    ],
+    "norm_box": [
+      233,
+      616,
+      283,
+      852
+    ],
+    "file": "page_0011_fig_000.jpg",
+    "label": "চিত্র 3",
+    "caption": "স্বাক্ষর"
+  },
+  {
+    "page": "page_0024",
+    "page_num": 24,
+    "figure_id": "page_0024_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      60,
+      93,
+      775,
+      1068
+    ],
+    "norm_box": [
+      72,
+      72,
+      822,
+      928
+    ],
+    "file": "page_0024_fig_000.jpg",
+    "label": "চিত্র 4",
+    "caption": "কৈলাস ও মানস সরোবর অঞ্চলের পথ-মানচিত্র"
+  },
+  {
+    "page": "page_0085",
+    "page_num": 85,
+    "figure_id": "page_0085_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      79,
+      198,
+      343,
+      500
+    ],
+    "norm_box": [
+      153,
+      95,
+      385,
+      411
+    ],
+    "file": "page_0085_fig_000.jpg",
+    "label": "চিত্র 5",
+    "caption": "ও-পা-মে বা অমিতাভ বুদ্ধ"
+  },
+  {
+    "page": "page_0085",
+    "page_num": 85,
+    "figure_id": "page_0085_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      524,
+      198,
+      742,
+      495
+    ],
+    "norm_box": [
+      153,
+      627,
+      381,
+      888
+    ],
+    "file": "page_0085_fig_001.jpg",
+    "label": "চিত্র 6",
+    "caption": "শাক্য-থূপ বা শাক্য মুনী"
+  },
+  {
+    "page": "page_0085",
+    "page_num": 85,
+    "figure_id": "page_0085_fig_002",
+    "figure_local_idx": 2,
+    "source": "gemini",
+    "pixel_box": [
+      81,
+      704,
+      302,
+      999
+    ],
+    "norm_box": [
+      542,
+      98,
+      769,
+      362
+    ],
+    "file": "page_0085_fig_002.jpg",
+    "label": "চিত্র 7",
+    "caption": "চেন্-রে-জি বা অবলোকিতেশ্বর"
+  },
+  {
+    "page": "page_0085",
+    "page_num": 85,
+    "figure_id": "page_0085_fig_003",
+    "figure_local_idx": 3,
+    "source": "gemini",
+    "pixel_box": [
+      341,
+      553,
+      739,
+      994
+    ],
+    "norm_box": [
+      426,
+      408,
+      765,
+      884
+    ],
+    "file": "page_0085_fig_003.jpg",
+    "label": "চিত্র 8",
+    "caption": "ঐশ্বর্য প্রদায়িনী মহাজ্ঞানী আর্য-তারা"
+  },
+  {
+    "page": "page_0093",
+    "page_num": 93,
+    "figure_id": "page_0093_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      140,
+      271,
+      701,
+      725
+    ],
+    "norm_box": [
+      209,
+      168,
+      558,
+      839
+    ],
+    "file": "page_0093_fig_000.jpg",
+    "label": "চিত্র 9",
+    "caption": "তিব্বতী মেয়েদের চুলের বাহার"
+  },
+  {
+    "page": "page_0117",
+    "page_num": 117,
+    "figure_id": "page_0117_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      81,
+      197,
+      353,
+      534
+    ],
+    "norm_box": [
+      152,
+      98,
+      411,
+      423
+    ],
+    "file": "page_0117_fig_000.jpg",
+    "label": "চিত্র 10",
+    "caption": "ও-পা-মে বা অমিতাভ বুদ্ধ"
+  },
+  {
+    "page": "page_0117",
+    "page_num": 117,
+    "figure_id": "page_0117_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      533,
+      201,
+      748,
+      527
+    ],
+    "norm_box": [
+      155,
+      638,
+      406,
+      895
+    ],
+    "file": "page_0117_fig_001.jpg",
+    "label": "চিত্র 11",
+    "caption": "শাক্য-থুপ বা শাক্য মুনী"
+  },
+  {
+    "page": "page_0117",
+    "page_num": 117,
+    "figure_id": "page_0117_fig_002",
+    "figure_local_idx": 2,
+    "source": "gemini",
+    "pixel_box": [
+      85,
+      704,
+      310,
+      1029
+    ],
+    "norm_box": [
+      542,
+      102,
+      792,
+      372
+    ],
+    "file": "page_0117_fig_002.jpg",
+    "label": "চিত্র 12",
+    "caption": "চেন্-রে-জি বা অবলোকিতেশ্বর"
+  },
+  {
+    "page": "page_0117",
+    "page_num": 117,
+    "figure_id": "page_0117_fig_003",
+    "figure_local_idx": 3,
+    "source": "gemini",
+    "pixel_box": [
+      346,
+      551,
+      748,
+      1032
+    ],
+    "norm_box": [
+      424,
+      414,
+      794,
+      895
+    ],
+    "file": "page_0117_fig_003.jpg",
+    "label": "চিত্র 13",
+    "caption": "ঐশ্বর্য প্রদায়িনী মহাজ্ঞানী আর্য-তারা"
+  },
+  {
+    "page": "page_0199",
+    "page_num": 199,
+    "figure_id": "page_0199_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      80,
+      211,
+      756,
+      973
+    ],
+    "norm_box": [
+      163,
+      96,
+      749,
+      905
+    ],
+    "file": "page_0199_fig_000.jpg",
+    "label": "চিত্র 14",
+    "caption": "জোখাং মন্দিরের চূড়া"
+  },
+  {
+    "page": "page_0212",
+    "page_num": 212,
+    "figure_id": "page_0212_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      85,
+      380,
+      753,
+      691
+    ],
+    "norm_box": [
+      293,
+      102,
+      532,
+      901
+    ],
+    "file": "page_0212_fig_000.jpg",
+    "label": "চিত্র 15",
+    "caption": "পোতালা প্রাসাদ"
+  },
+  {
+    "page": "page_0345",
+    "page_num": 345,
+    "figure_id": "page_0345_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      95,
+      388,
+      736,
+      834
+    ],
+    "norm_box": [
+      299,
+      114,
+      642,
+      881
+    ],
+    "file": "page_0345_fig_000.jpg",
+    "label": "চিত্র 16",
+    "caption": "ব্রহ্মপুত্র যেখানে রূপ নিয়েছে—গাছের গুঁড়ি ফেলে গ্রামবাসীরা এইভাবেই নদী পার হয়।"
+  },
+  {
+    "page": "page_0347",
+    "page_num": 347,
+    "figure_id": "page_0347_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      165,
+      139,
+      713,
+      1107
+    ],
+    "norm_box": [
+      107,
+      198,
+      852,
+      853
+    ],
+    "file": "page_0347_fig_000.jpg",
+    "label": "চিত্র 17",
+    "caption": "কেলাসপতি দোমচেক ও তাঁর অর্ধাঙ্গিনী দোরজে ফাগমো (শিব ও শক্তি)"
+  },
+  {
+    "page": "page_0437",
+    "page_num": 437,
+    "figure_id": "page_0437_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      129,
+      94,
+      708,
+      677
+    ],
+    "norm_box": [
+      73,
+      155,
+      521,
+      848
+    ],
+    "file": "page_0437_fig_000.jpg",
+    "label": "চিত্র 18",
+    "caption": "শ্রী যন্ত্রের চিত্র"
+  },
+  {
+    "page": "page_0438",
+    "page_num": 438,
+    "figure_id": "page_0438_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      17,
+      24,
+      889,
+      566
+    ],
+    "norm_box": [
+      18,
+      19,
+      413,
+      989
+    ],
+    "file": "page_0438_fig_000.jpg",
+    "label": "চিত্র 19",
+    "caption": "ফু-লা থেকে চোমলহরির দৃশ্য"
+  },
+  {
+    "page": "page_0438",
+    "page_num": 438,
+    "figure_id": "page_0438_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      17,
+      804,
+      891,
+      1353
+    ],
+    "norm_box": [
+      587,
+      19,
+      987,
+      992
+    ],
+    "file": "page_0438_fig_001.jpg",
+    "label": "চিত্র 20",
+    "caption": "ফু-লা থেকে চোমলহরির দৃশ্য"
+  },
+  {
+    "page": "page_0439",
+    "page_num": 439,
+    "figure_id": "page_0439_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      26,
+      0,
+      723,
+      1112
+    ],
+    "norm_box": [
+      0,
+      34,
+      930,
+      925
+    ],
+    "file": "page_0439_fig_000.jpg",
+    "label": "চিত্র 21",
+    "caption": "একটি প্রার্থনা চক্র"
+  },
+  {
+    "page": "page_0440",
+    "page_num": 440,
+    "figure_id": "page_0440_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      13,
+      0,
+      888,
+      596
+    ],
+    "norm_box": [
+      0,
+      15,
+      425,
+      985
+    ],
+    "file": "page_0440_fig_000.jpg",
+    "label": "চিত্র 22",
+    "caption": "পোতালা প্রাসাদের একটি অভ্যন্তরীণ দৃশ্য"
+  },
+  {
+    "page": "page_0440",
+    "page_num": 440,
+    "figure_id": "page_0440_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      19,
+      673,
+      892,
+      1354
+    ],
+    "norm_box": [
+      480,
+      22,
+      965,
+      990
+    ],
+    "file": "page_0440_fig_001.jpg",
+    "label": "চিত্র 23",
+    "caption": "নরবুলিংকা—দলাই লামার গ্রীষ্মাবাস"
+  },
+  {
+    "page": "page_0441",
+    "page_num": 441,
+    "figure_id": "page_0441_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      16,
+      0,
+      889,
+      643
+    ],
+    "norm_box": [
+      0,
+      18,
+      457,
+      986
+    ],
+    "file": "page_0441_fig_000.jpg",
+    "label": "চিত্র 24",
+    "caption": "গুম্ফার একটি তোরণ"
+  },
+  {
+    "page": "page_0441",
+    "page_num": 441,
+    "figure_id": "page_0441_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      21,
+      722,
+      888,
+      1306
+    ],
+    "norm_box": [
+      513,
+      24,
+      928,
+      985
+    ],
+    "file": "page_0441_fig_001.jpg",
+    "label": "চিত্র 25",
+    "caption": "গুম্ফার পথে পতাকাগুলিই পথিকের দৃষ্টি আকর্ষণ করে— দেওয়ালে রয়েছে তিব্বতি হরফে মনিমন্ত্র"
+  },
+  {
+    "page": "page_0442",
+    "page_num": 442,
+    "figure_id": "page_0442_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      0,
+      0,
+      926,
+      644
+    ],
+    "norm_box": [
+      0,
+      1,
+      463,
+      994
+    ],
+    "file": "page_0442_fig_000.jpg",
+    "label": "চিত্র 26",
+    "caption": "ঠাণ্ডায় নদীর জল জমে বরফ হয়ে গিয়েছে"
+  },
+  {
+    "page": "page_0442",
+    "page_num": 442,
+    "figure_id": "page_0442_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      13,
+      769,
+      924,
+      1357
+    ],
+    "norm_box": [
+      553,
+      14,
+      976,
+      992
+    ],
+    "file": "page_0442_fig_001.jpg",
+    "label": "চিত্র 27",
+    "caption": "“সতায়-শিবম্-সুন্দরম্”— বরফে ঢাকা হিমালয়ের একটি দৃশ্য"
+  },
+  {
+    "page": "page_0443",
+    "page_num": 443,
+    "figure_id": "page_0443_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      12,
+      37,
+      906,
+      642
+    ],
+    "norm_box": [
+      27,
+      13,
+      460,
+      968
+    ],
+    "file": "page_0443_fig_000.jpg",
+    "label": "চিত্র 28",
+    "caption": "“অব্যক্ত যেখানে ব্যক্ত হয়েছে”— বরফে ঢাকা হিমালয়ের একটি দৃশ্য"
+  },
+  {
+    "page": "page_0443",
+    "page_num": 443,
+    "figure_id": "page_0443_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      11,
+      720,
+      912,
+      1376
+    ],
+    "norm_box": [
+      516,
+      12,
+      986,
+      975
+    ],
+    "file": "page_0443_fig_001.jpg",
+    "label": "চিত্র 29",
+    "caption": "দীর্ঘ পঁচিশ বছর পর সেই ব্রহ্মপুত্রের ধারে দাঁড়িয়ে লেখক— কামাখ্যা শিবানন্দ আশ্রম"
+  },
+  {
+    "page": "page_0444",
+    "page_num": 444,
+    "figure_id": "page_0444_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      0,
+      0,
+      905,
+      611
+    ],
+    "norm_box": [
+      0,
+      0,
+      439,
+      988
+    ],
+    "file": "page_0444_fig_000.jpg",
+    "label": "চিত্র 30",
+    "caption": "লোকনৃত্যের বেশে কয়েকটি তিব্বতী যুবতী"
+  },
+  {
+    "page": "page_0444",
+    "page_num": 444,
+    "figure_id": "page_0444_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      0,
+      782,
+      905,
+      1338
+    ],
+    "norm_box": [
+      561,
+      0,
+      960,
+      988
+    ],
+    "file": "page_0444_fig_001.jpg",
+    "label": "চিত্র 31",
+    "caption": "গ্রামবাসীরা রোদ পোয়াচ্ছে"
+  },
+  {
+    "page": "page_0445",
+    "page_num": 445,
+    "figure_id": "page_0445_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      43,
+      77,
+      883,
+      681
+    ],
+    "norm_box": [
+      53,
+      48,
+      465,
+      986
+    ],
+    "file": "page_0445_fig_000.jpg",
+    "label": "চিত্র 32",
+    "caption": "একটি তিব্বতী গুফা"
+  },
+  {
+    "page": "page_0445",
+    "page_num": 445,
+    "figure_id": "page_0445_fig_001",
+    "figure_local_idx": 1,
+    "source": "gemini",
+    "pixel_box": [
+      43,
+      799,
+      883,
+      1406
+    ],
+    "norm_box": [
+      546,
+      48,
+      960,
+      986
+    ],
+    "file": "page_0445_fig_001.jpg",
+    "label": "চিত্র 33",
+    "caption": "দেওয়ালে সূক্ষ্ম কাজের নমুনা"
+  },
+  {
+    "page": "page_0446",
+    "page_num": 446,
+    "figure_id": "page_0446_fig_000",
+    "figure_local_idx": 0,
+    "source": "gemini",
+    "pixel_box": [
+      7,
+      12,
+      2538,
+      1295
+    ],
+    "norm_box": [
+      9,
+      3,
+      913,
+      994
+    ],
+    "file": "page_0446_fig_000.jpg",
+    "label": "চিত্র 34",
+    "caption": "লেখকের পথ মানচিত্র"
+  }
+]

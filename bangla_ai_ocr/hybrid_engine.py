@@ -6,9 +6,13 @@ import numpy as np
 from pathlib import Path
 from PIL import Image
 
-sys.stdout.reconfigure(encoding='utf-8')
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except Exception:  # windowed .exe has no real stdout
+    pass
 
 from .rl_spell_corrector import RLSpellCorrector
+from .layout_model import imread
 
 class HybridBanglaOCR:
     """
@@ -79,7 +83,7 @@ class HybridBanglaOCR:
 
     def transcribe_page(self, image_path: Path) -> str:
         """Complete end-to-end pipeline: Preprocess ➔ Detect ➔ Recognize ➔ RL Refine."""
-        img = cv2.imread(str(image_path))
+        img = imread(image_path)
         if img is None:
             return ""
             

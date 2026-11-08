@@ -11,7 +11,7 @@ class RLSpellCorrector:
     - Hallucination Penalty (P_hallucination): Penalizes mixed scripts & broken matras
     """
     def __init__(self):
-        # Known common OCR hallucination replacements for Bengali historical texts
+        # Known common OCR hallucination replacements for Bengali historical texts & Mahatirtha
         self.ligature_rules = {
             'হাবিৰুর': 'হাবিবুর',
             'মৌлনীতির': 'মৌলনীতির',
@@ -22,6 +22,24 @@ class RLSpellCorrector:
             'আন্তঃরাষ্ট্রীয়': 'আন্তঃরাষ্ট্রীয়',
             'পাকিস্তানতে': 'পাকিস্তানকে',
             'বিশ্বেসর': 'বিশ্বের',
+            # Mahatirther Shesh Jatri learned corrections:
+            'ম্মহতীর্থের': 'মহাতীর্থের',
+            'মহাতীর্পের': 'মহাতীর্থের',
+            'যত্রী': 'যাত্রী',
+            'কৈলাসনাপ': 'কৈলাসনাথ',
+            'ষ্টোস': 'স্টোরস্',
+            'কিত্ত্ব': 'কিন্তু',
+            'হঠাং': 'হঠাৎ',
+            'শাস্তিনিকেতনের': 'শান্তিনিকেতনের',
+            'কাঠমাগুর': 'কাঠমান্ডুর',
+            'দৃতাবাস': 'দূতাবাস',
+            'সমযেই': 'সময়েই',
+            'সময': 'সময়',
+            'সমযে': 'সময়ে',
+            'ভূল': 'ভুল',
+            'ভাজ': 'ভাঁজ',
+            '|l': '॥',
+            '||': '॥',
         }
         
         # Build core Bengali vocabulary set
@@ -29,22 +47,36 @@ class RLSpellCorrector:
         self._init_vocab()
         
     def _init_vocab(self):
-        # Seed core vocabulary
+        # Seed core vocabulary + Mahatirtha key terminology
         words = [
             "বাংলাদেশ", "স্বাধীনতা", "যুদ্ধ", "কূটনীতি", "কূটনৈতিক", "পাকিস্তান",
             "ভারত", "মুক্তিযুদ্ধ", "সরকার", "মুজিবনগর", "বঙ্গবন্ধু", "রাজনৈতিক",
             "আন্তর্জাতিক", "জাতিসংঘ", "নিরাপত্তা", "পরিষদ", "পররাষ্ট্র", "দিল্লি",
             "ইসলামাবাদ", "লন্ডন", "ওয়াশিংটন", "মস্কো", "বেইজিং", "শরণার্থী",
-            "সামরিক", "বাহিনী", "ঐতিহাসিক", "ইতিহাস", "সংগ্রাম", "জনগণ"
+            "সামরিক", "বাহিনী", "ঐতিহাসিক", "ইতিহাস", "সংগ্রাম", "জনগণ",
+            # Book domain vocabulary:
+            "মহাতীর্থ", "মহাতীর্থের", "যাত্রী", "তীর্থযাত্রী", "তিব্বত", "তিব্বতী",
+            "কৈলাস", "কৈলাসনাথ", "মানস", "সরোবর", "লাসা", "বিমল", "দে",
+            "ভূ-পর্যটক", "কাঠমান্ডু", "কাঠমান্ডুর", "দূতাবাস", "শান্তিনিকেতন",
+            "দোংগলদাদা", "মন্ডলা", "ডাকিনী", "বৌদ্ধ", "শাক্যমুনি", "অবলোকিতেশ্বর",
+            "অমিতাভ", "ডোলমা", "হিমালয়", "লিপুলেখ", "গোম্পা", "ভিক্ষু", "লামা"
         ]
         self.common_vocab.update(words)
 
     def clean_illegal_scripts(self, text: str) -> str:
-        """Strip Devanagari, Myanmar, and stray non-Bengali characters."""
+        """Strip Devanagari, Myanmar, stray non-Bengali characters and fix broken ligatures."""
         # Devanagari Unicode Range
         text = re.sub(r'[\u0900-\u0963\u0966-\u097F]', '', text)
         # Myanmar Unicode Range
         text = re.sub(r'[\u1000-\u109F]', '', text)
+        # Fix virama immediately followed by vowel sign (e.g. জ্ীীবনের -> জীবনের)
+        text = re.sub(r'[\u09CD]+([\u09BE-\u09CC])', r'\1', text)
+        # Fix duplicated vowel signs / matras
+        text = re.sub(r'[\u09C0]{2,}', '\u09C0', text)
+        text = re.sub(r'[\u09BF]{2,}', '\u09BF', text)
+        text = re.sub(r'[\u09C1]{2,}', '\u09C1', text)
+        text = re.sub(r'[\u09C2]{2,}', '\u09C2', text)
+        text = re.sub(r'[\u09BC]{2,}', '\u09BC', text)
         # Fix multiple consecutive spaces
         text = re.sub(r'\s+', ' ', text)
         return text.strip()
